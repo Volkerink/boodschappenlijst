@@ -10,10 +10,15 @@ class Grocery extends Model
     use HasFactory;
 
     protected $fillable = [
-        'NAME',
-        'NUMBER',
+        'name',
+        'category',
+        'number',
         'price',
     ];
 
     protected $hidden = [];
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
 }

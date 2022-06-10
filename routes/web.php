@@ -25,5 +25,4 @@ Route::get('/groceries/{grocery}/edit', [GroceriesController::class, 'edit'])->n
 Route::put('/groceries/{grocery}', [GroceriesController::class, 'update'])->name('groceries.update');
 Route::patch('/groceries/{grocery}', [GroceriesController::class, 'update'])->name('groceries.update');
 Route::delete('/groceries/{grocery}', [GroceriesController::class, 'destroy'])->name('groceries.destroy');
-//Route::post('/store', [GroceriesController::class, 'store'])->name('groceries.store');
 Route::get('/', [GroceriesController::class, 'index'])->name('groceries');

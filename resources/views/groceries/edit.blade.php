@@ -15,11 +15,15 @@
             <th>Subtotaal</th>
         </tr>
         <tr>
-            <td><input type="text" name="name" value={{ $activeRow["name"] }}></td>
-            <td><input type="text" name="category" value={{ $activeRow["category"] }}></td>
+            <td><input type="text" name="name" value='{{ $activeRow["name"] }}'></td>
+            <td><select name="category_id" value="{{ $activeRow->category }}">
+                <option selected value="{{ $activeRow->category->id }}">{{ $activeRow->category->category }}</option>
+                @foreach ($categoryDB as $value) 
+                <option value="{{ $value->id }}">{{ $value->category }}</option>
+                @endforeach</td>
             <td id="price1"><input type="number" name="price" step="0.01" min=0 value={{ $activeRow["price"] }} id="price" onchange="calculateSubTotal()"></td>
             <td><input type="number" name="number" min=1 value={{ $activeRow["number"] }} id="number" onchange="calculateSubTotal()"></td>
-            <td id="SubTotal"> 0.00&#8364</td>
+            <td id="SubTotal"> 0,00&#8364</td>
             <td><input type="submit" value="Aanpassen"></td>
         </tr>
     </table>

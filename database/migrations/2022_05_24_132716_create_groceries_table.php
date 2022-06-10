@@ -17,7 +17,7 @@ class CreateGroceriesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('category');
+            $table->foreignId('category_id');
             $table->integer('number');
             $table->float('price');
         });

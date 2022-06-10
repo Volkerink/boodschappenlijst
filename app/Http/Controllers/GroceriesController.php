@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grocery;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class GroceriesController extends Controller
@@ -10,7 +11,7 @@ class GroceriesController extends Controller
     public function validateInput()    {
         return request()->validate([
             'name' => 'required|string|min:2',
-            'category' => 'required|string|min:2',
+            'category_id' => 'required|integer|min:1',
             'number' => 'required|integer|min:1',
             'price' => 'required|numeric|min:0'
         ]);
@@ -20,6 +21,10 @@ class GroceriesController extends Controller
     public function groceryDB() {
         return Grocery::all(); 
     }
+
+    public function categoryDB() {
+        return Category::all();
+   }
 
 
     public function index() {
@@ -34,7 +39,8 @@ class GroceriesController extends Controller
 
     
     public function create() {
-        return view('groceries.create');
+        $categoryDB = $this->categoryDB();
+        return view('groceries.create', compact('categoryDB'));
     }
 
 
@@ -45,8 +51,9 @@ class GroceriesController extends Controller
 
 
     public function edit(Request $request) {
+        $categoryDB = $this->categoryDB();
         $activeRow = $this->groceryDB()[$request->keys()[1] - 1];
-        return view('groceries.edit', compact('activeRow'));
+        return view('groceries.edit', compact('activeRow', 'categoryDB'));
     }
 
 

@@ -13,7 +13,7 @@
 @foreach ($groceryDB as $value) 
         <tr>
             <td>{{ $value["name"] }}</td>
-            <td>{{ $value["category"] }}</td>
+            <td>{{ $value->category->category }}</td>
             <td>{{ number_format($value["price"], 2, ',', ' '); }}&#8364</td>
             <td>{{ $value["number"] }}</td>
             <td>{{ number_format(($value["price"] * $value["number"]), 2, ',', ' ') }}&#8364</td>

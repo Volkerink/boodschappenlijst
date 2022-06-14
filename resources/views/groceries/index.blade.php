@@ -18,16 +18,13 @@
             <td>{{ number_format($value["price"], 2, ',', ' '); }}&#8364</td>
             <td>{{ $value["number"] }}</td>
             <td>{{ number_format(($value["price"] * $value["number"]), 2, ',', ' ') }}&#8364</td>
-            <td><form action='/groceries/{{ $value["id"] }}/edit' method='get'>@csrf<input type='submit' name='{{ $value["id"] }}' class='editbutton' value='Pas aan' /></form></td>
-            <td><form action='/groceries/{{ $value["id"] }}' method='POST'>@csrf<input type='submit' name='{{ $value["id"] }}' class='editbutton' value='Verwijder' /><input name="_method" type="hidden" value="DELETE"></form></td>
+            <td><form action='/groceries/{{ $value["id"] }}/edit' method='get'>@csrf<button type='submit' name='grocery_id' class='editbutton' value='{{ $value["id"] }}'>Pas aan</button></form></td>
+            <td><form action='/groceries/{{ $value["id"] }}' method='POST'>@csrf<button name='grocery_id' class='editbutton' value='{{ $value["id"] }}' >Verwijder</button><input name="_method" type="hidden" value="DELETE"></form></td>
         </tr>
     @endforeach
 
     <tr>
-        <td><strong>Totaal</strong></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td colspan="4"><strong>Totaal</strong></td>
         <td><strong>{{$finalPrice[0]}}&#8364</strong></td>
     </tr>
 </table> 

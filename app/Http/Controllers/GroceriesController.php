@@ -17,19 +17,8 @@ class GroceriesController extends Controller
         ]);
     }
 
-    
-    public function groceryDB() {
-        return Grocery::all(); 
-    }
-
-
-    public function categoryDB() {
-        return Category::all();
-    }
-
-
     public function index() {
-        $groceryDB = $this->groceryDB();
+        $groceryDB = Grocery::all();
         $totalPrice = 0;
         foreach ($groceryDB as $value) {
             $totalPrice += ($value["price"] * $value["number"]);
@@ -40,7 +29,7 @@ class GroceriesController extends Controller
 
     
     public function create() {
-        $categoryDB = $this->categoryDB();
+        $categoryDB = Category::all();
         return view('groceries.create', compact('categoryDB'));
     }
 
@@ -52,8 +41,8 @@ class GroceriesController extends Controller
 
 
     public function edit(Request $request) {
-        $categoryDB = $this->categoryDB();
-        $activeRow = $this->groceryDB()[$request->keys()[1] - 1];
+        $categoryDB = Category::all();
+        $activeRow = Grocery::where('id',$request->grocery_id)->with('category')->first();
         return view('groceries.edit', compact('activeRow', 'categoryDB'));
     }
 
@@ -66,7 +55,7 @@ class GroceriesController extends Controller
 
 
     public function destroy(Request $request) {
-        Grocery::destroy($request->keys()[1]);
+        Grocery::destroy($request->grocery_id);
         return redirect()->route('groceries');
     }
 }

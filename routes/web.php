@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Route::get('/groceries', [GroceriesController::class, 'index'])->name('groceries.index');
 Route::get('/groceries/create', [GroceriesController::class, 'create'])->name('groceries.create');
 Route::post('/groceries', [GroceriesController::class, 'store'])->name('groceries.store');

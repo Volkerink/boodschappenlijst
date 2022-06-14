@@ -22,9 +22,10 @@ class GroceriesController extends Controller
         return Grocery::all(); 
     }
 
+
     public function categoryDB() {
         return Category::all();
-   }
+    }
 
 
     public function index() {

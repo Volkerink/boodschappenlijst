@@ -1,6 +1,7 @@
 @extends ('/layouts/app')
 
 @section('content')
+<h1>Boodschappenlijst</h1>
 <table>
             <tr>
                 <th>Product</th>

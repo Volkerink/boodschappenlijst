@@ -1,7 +1,7 @@
 @extends ('/layouts/app')
 
 @section('content')
-<h1>Pas een boodschap aan</h1>
+<h1>Pas een artikel aan</h1>
 
 <form action="{{ route('groceries.update', ['grocery' => $activeRow['id']]) }}" method="POST">
     @csrf
